@@ -2,13 +2,13 @@
 # this entire thing is a hack and badly needs reimplementing
 import bin.configcheck
 import bin.compile
-import sys
+import sys, os, config
 bin.compile.vcheck()
 
-parser.add_option("-p", "--port", help="Port to start the server on.", type="int", dest="port", default=DEFAULT_PORT)
+# ✅ Use Render's $PORT if present, otherwise fall back to 9090
+DEFAULT_PORT = int(os.environ.get("PORT", 9090))
 
 from optparse import OptionParser
-import sys, os, config
 
 def run_twistd(args1=None, args2=None):
   from twisted.scripts.twistd import run
@@ -100,7 +100,7 @@ if options.sslcertificate and options.sslkey:
   if options.sslchain:
     args2+=["--certificate-chain", options.sslchain]
 else:
-  args2+=["--port", options.port]
+  args2+=["--port", str(options.port)]
 
 args2+=["--ip", options.ip]
 
