@@ -5,7 +5,7 @@ import bin.compile
 import sys
 bin.compile.vcheck()
 
-DEFAULT_PORT = 9090
+parser.add_option("-p", "--port", help="Port to start the server on.", type="int", dest="port", default=DEFAULT_PORT)
 
 from optparse import OptionParser
 import sys, os, config
