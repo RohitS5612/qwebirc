@@ -1,0 +1,3 @@
+NETWORK_NAME = "EsperNet"
+NETWORK_HOST = "irc.esper.net"
+NETWORK_PORT = 6667
